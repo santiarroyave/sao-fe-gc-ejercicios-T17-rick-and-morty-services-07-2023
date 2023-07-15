@@ -7,10 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class PersComponent {
 
-  @Input() seleccionado:any;
+  @Input() personaje:any;
 
   cerrar(){
-    this.seleccionado = "";
+    this.personaje = null;
   }
-
 }

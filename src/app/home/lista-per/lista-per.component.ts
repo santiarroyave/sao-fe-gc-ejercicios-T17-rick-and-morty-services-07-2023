@@ -1,70 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PersonajesService } from 'src/app/personajes.service';
 
 @Component({
   selector: 'app-lista-per',
   templateUrl: './lista-per.component.html',
   styleUrls: ['./lista-per.component.css']
 })
-export class ListaPerComponent {
+  export class ListaPerComponent implements OnInit{
 
-  characters = [
-    {
-      "id": 1,
-      "name": "Rick Sanchez",
-      "status": "Alive",
-      "species": "Human",
-      "gender": "Male",
-      "origin": "Earth",
-      "location": "Earth",
-      "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-    },
-    {
-      "id": 2,
-      "name": "Morty Smith",
-      "status": "Alive",
-      "species": "Human",
-      "gender": "Male",
-      "origin": "Citadel of Ricks",
-      "location": "Earth",
-      "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-    },
-    {
-      "id": 3,
-      "name": "Summer Smith",
-      "status": "Alive",
-      "species": "Human",
-      "gender": "Female",
-      "origin": "Earth (Replacement Dimension)",
-      "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg"
-    },
-    {
-      "id": 4,
-      "name": "Beth Smith",
-      "status": "Dead",
-      "species": "Human",
-      "gender": "Female",
-      "origin": "Earth (Replacement Dimension)",
-      "location": "Earth",
-      "image": "https://rickandmortyapi.com/api/character/avatar/4.jpeg"
-    },
-    {
-      "id": 5,
-      "name": "Jerry Smith",
-      "status": "Dead",
-      "species": "Human",
-      "gender": "Male",
-      "origin": "Earth (Replacement Dimension)",
-      "location": "Earth",
-      "image": "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
-    }
-  ];
+    maxPersonajes:number = 12;
 
-  // Almacena el caracter seleccionado
-  seleccionado = "";
+    personajes:any = null;
+    personaje:any = null;
 
-  seleccionar(personaje:any){
-    this.seleccionado = personaje;
+  // Constructores
+  constructor(private personajesService: PersonajesService){ };
+  
+  ngOnInit():void{
+    this.personajesService.getPersonajes(this.maxPersonajes).subscribe( result => this.personajes = result);
   };
-
-
+  
+  seleccionar(id:number){
+    this.personaje = id;
+    this.personajesService.getPersonajeId(id).subscribe( result => this.personaje = result);
+  };
 }

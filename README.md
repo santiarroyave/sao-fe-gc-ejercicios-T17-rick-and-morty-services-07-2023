@@ -10,6 +10,18 @@
     - Definiremos el parámetro "http" en constructor: `constructor(private http: HttpClient) { }`
     - Crearemos la funcion *return()*: `return this.http.get("https://rickandmortyapi.com/api/character");`
 
+### Llamar al servicio y recibir los datos
+1. En **lista-per.component.ts**
+    - Importaremos el servicio `import { PersonajesService } from 'src/app/personajes.service';`
+    - Importaremos la interfaz OnInit `import { OnInit } from '@angular/core';`
+    - Implementaremos la interfaz `export class ListaPerComponent implements OnInit{...}`
+    - Crearemos un atributo que almacene los datos: `personajes:any = null;`
+    - Definiremos el parámetro en el constructor: `constructor(private personajesDelServicio: PersonajesService){ };`
+    - Obtendremos los datos desde la funcion *ngOnInit()*: `this.personajesService.getPersonajes().subscribe( result => this.personajes = result);`
+2. En **lista-per.component.html**
+    - Crearemos un bucle ngFor `<div *ngFor="let personaje of personajes">...</div>`
+    - Mostraremos los datos dentro del bucle `{{personaje.name}}...` 
+
 ## Readme de Angular
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
 
