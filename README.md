@@ -22,6 +22,9 @@
     - Crearemos un bucle ngFor `<div *ngFor="let personaje of personajes">...</div>`
     - Mostraremos los datos dentro del bucle `{{personaje.name}}...` 
 
+### Lista de personajes
+![imagen](https://github.com/santiarroyave/sao-fe-gc-ejercicios-T17-rick-and-morty-services-07-2023/assets/135848692/109fcfc0-2d51-4026-a73f-0371af5ae144)
+
 ## Readme de Angular
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
 
