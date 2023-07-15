@@ -11,6 +11,7 @@ import { ListaPerComponent } from './home/lista-per/lista-per.component';
 import { PersComponent } from './home/lista-per/pers/pers.component';
 import { AboutComponent } from './home/about/about.component';
 import { NavComponent } from './home/nav/nav.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NavComponent } from './home/nav/nav.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
