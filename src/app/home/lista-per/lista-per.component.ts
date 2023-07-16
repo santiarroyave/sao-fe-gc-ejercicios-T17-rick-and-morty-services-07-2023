@@ -6,22 +6,24 @@ import { PersonajesService } from 'src/app/personajes.service';
   templateUrl: './lista-per.component.html',
   styleUrls: ['./lista-per.component.css']
 })
-  export class ListaPerComponent implements OnInit{
 
-    maxPersonajes:number = 12;
+export class ListaPerComponent implements OnInit{
 
-    personajes:any = null;
-    personaje:any = null;
+  // ATRIBUTOS
+  maxPersonajes:number = 12;
 
-  // Constructores
+  personajes:any = null;
+  personaje:any = null;
+
+  // CONSTRUCTORES
   constructor(private personajesService: PersonajesService){ };
   
+  // MÉTODOS
   ngOnInit():void{
     this.personajesService.getPersonajes(this.maxPersonajes).subscribe( result => this.personajes = result);
   };
   
   seleccionar(id:number){
-    this.personaje = id;
     this.personajesService.getPersonajeId(id).subscribe( result => this.personaje = result);
   };
 }
